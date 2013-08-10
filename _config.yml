@@ -1,4 +1,4 @@
-baseurl: /
+baseurl: http://code.siragonplay.com
 permalink: pretty
 markdown: rdiscount
 prose:
