@@ -1,18 +1,286 @@
----
-layout: default
-section: blog
----
+<!DOCTYPE html><html class="">
+<head><meta charset="UTF-8">	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
 
-<div class='listing col6 pad4h margin3'>
-  {% for item in site.categories.blog limit:1000 %}
-    {% capture date %}{{ item.date | date: '%B %Y' }}{% endcapture %}
-    {% capture ndate %}{{ item.next.date | date: '%B %Y' }}{% endcapture %}
+	<!-- Home screen icon  Mathias Bynens mathiasbynens.be/notes/touch-icons -->
+	<!-- For iPhone 4 with high-resolution Retina display: -->
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon.png">
+	<!-- For first-generation iPad: -->
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon.png">
+	<!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png">
+	<!-- For nokia devices and desktop browsers : -->
+	<link rel="shortcut icon" href="favicon.ico" />
 
-    {% if date != ndate %}
-      <h4 class='month'>{{item.date | date: '%B %Y'}}</h4>
-    {% endif %}
-    <a class='item' href='{{site.baseurl}}{{item.url}}'>{{item.title}} <span class='date'>&#126; {{item.date | date:"%b %d"}}</span></a>
-  {% endfor %}
+<style>
+    
+
+/* Basic desktop/screen width sniff */
+@media only screen and (min-width : 1224px) {
+  /* styles */
+}
+
+/* Traditional iPhone width */
+@media
+  only screen and (-webkit-min-device-pixel-ratio : 1.5),
+  only screen and (min-device-pixel-ratio : 1.5) {
+  /* styles */
+}
+
+/* Device settings at different orientations */
+@media screen and (orientation:portrait) {
+  /* styles */
+}
+@media screen and (orientation:landscape) {
+  /* styles */
+}
+    
+    
+    ::-webkit-scrollbar {
+	display: none;
+}
+
+html {
+	font-family:"Helvetica Neue","Helvetica",sans-serif;
+	font-size:1rem;
+}
+
+html,body {
+	margin:0;
+	padding:0;
+	background:#fff;
+	overflow:hidden;
+}
+
+
+
+.screen {
+	position:absolute;
+	left:0px;
+	top:0px;
+	
+	height:100%;
+	overflow:hidden;
+}
+
+header {
+	position:absolute;
+	left:0;
+	top:0;
+	right:0;
+	height:44px;
+	overflow:hidden;
+	background:#f8f8f8;
+	z-index:2;
+	box-shadow:0 1px 0 rgba(0,0,0,.1),0 1px 2px rgba(0,0,0,.1);
+
+	opacity:.75;
+
+}
+
+header h1 {
+position: relative;
+	font-family:"Helvetica Neue","Helvetica",sans-serif;
+	font-weight:normal;
+	font-size:1rem;
+	margin:0;
+	padding:0;
+	line-height:44px;
+	text-align:center;
+  z-index: 2;
+  font-weight:300;
+	box-shadow:inset 0 -1px 0 rgba(255,255,255,.25);
+}
+
+
+.content-wrapper {
+	position:relative;
+	padding:0 1rem;
+	z-index:1;
+	height:100%;
+	overflow:auto;
+  -webkit-backface-visibility:hidden;
+}
+
+.content-wrapper .content {
+ 	margin-top:44px;
+}
+
+.content {
+	display:block;
+	padding-top:1em;
+}
+
+.messages {
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+
+.messages li {
+	display:block;
+	float:left;
+	clear:both;
+	max-width:65%;
+	margin:0 0 1rem 0;
+	padding:0;
+}
+
+.messages li:nth-child(even) {
+	float:right;
+}
+
+.messages li:nth-child(even) img {
+	float:right;
+}
+
+.messages p {
+	border-radius:.75rem;
+	background:#e6e5eb;
+	color:#383641;
+	padding:.6875rem;
+	margin:0;
+	font-size:.875rem;
+}
+
+.messages li:nth-child(even) p {
+	background:#158ffe;
+	color:#fff;
+}
+
+.messages img {
+	display:block;
+	max-width:65%;
+	border-radius:.75rem;
+}
+
+
+</style></head><body>
+<!--
+iPhone mockup:
+http://dribbble.com/shots/1231070-iPhone-5S-PSD-download
+
+Photos:
+http://lorempixel.com
+
+Related thread on Reddit:
+http://www.reddit.com/r/webdev/comments/1myjfh/proof_of_concept_ios7like_gaussian_blur_sticky/ccdud34
+-->
+<div class="phone">
+	<div class="screen">
+		<header>
+			<h1>Síragon</h1>
+		</header>
+		<div class="content-wrapper">
+			<div class="content">
+				<ol class="messages">
+					<li>
+						<p>Praesent porttitor nisl vel enim consectetur, vitae dictum ipsum condimentum.</p>
+					</li>
+					<li>
+						<p>Sed convallis lorem non augue lobortis tincidunt.</p>
+					</li>
+					<li>
+						<img src="" alt=""/>
+					</li>
+					<li>
+						<p>Mauris viverra lacus et justo accumsan, et lobortis eros adipiscing.</p>
+					</li>
+					<li>
+						<p>Integer dignissim metus id arcu pretium, ultrices tristique dolor vulputate.</p>
+					</li>
+					<li>
+						<p>Sed ultricies tortor sagittis sapien dapibus commodo.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<img src="" alt=""/>
+					</li>
+					<li>
+						<p>Mauris viverra lacus et justo accumsan, et lobortis eros adipiscing.</p>
+					</li>
+					<li>
+						<p>Integer eget nisi euismod, fermentum ligula eget, faucibus nibh.</p>
+					</li>
+					<li>
+						<p>Sed ultricies tortor sagittis sapien dapibus commodo.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Praesent porttitor nisl vel enim consectetur, vitae dictum ipsum condimentum.</p>
+					</li>
+					<li>
+						<p>Sed convallis lorem non augue lobortis tincidunt.</p>
+					</li>
+					<li>
+						<p>Praesent porttitor nisl vel enim consectetur, vitae dictum ipsum condimentum.</p>
+					</li>
+					<li>
+						<p>Sed convallis lorem non augue lobortis tincidunt.</p>
+					</li>
+					<li>
+						<img src="" alt=""/>
+					</li>
+					<li>
+						<p>Mauris viverra lacus et justo accumsan, et lobortis eros adipiscing.</p>
+					</li>
+					<li>
+						<p>Integer dignissim metus id arcu pretium, ultrices tristique dolor vulputate.</p>
+					</li>
+					<li>
+						<p>Sed ultricies tortor sagittis sapien dapibus commodo.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+					<li>
+						<p>Morbi nec erat sit amet dui aliquet pretium.</p>
+					</li>
+				</ol>
+			</div>
+		</div>
+	</div>
 </div>
 
-{% include rss-link.html %}
+<script src=""></script>
+<script>
+</script>
+</body></html>

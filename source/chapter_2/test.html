@@ -1,0 +1,220 @@
+<!DOCTYPE html><html class="">
+<head><meta charset="UTF-8">
+</head><body>
+<style>html,body {
+  padding:0;
+  margin:0;
+	background:#fafafa;
+	text-align:center;
+}
+
+body {
+  padding-top:2em;
+}
+
+h1 {
+  margin-bottom:3rem;
+  font-family:sans-serif;
+  color:#666;
+}
+
+button {
+	padding:2rem 1rem;
+	width:8rem;
+	border:0;
+	font-size:1rem;
+	font-weight:bold;
+	background:#3e87ec;
+	color:#fff;
+	border-radius:.25rem;
+
+	-webkit-perspective:500px;
+	-webkit-user-select:none;
+	-webkit-backface-visibility:hidden;
+
+	-moz-perspective:500px;
+	-moz-user-select:none;
+	-moz-backface-visibility:hidden;
+
+	-ms-perspective:500px;
+	-ms-user-select:none;
+	-ms-backface-visibility:hidden;
+
+	perspective:500px;
+	user-select:none;
+	backface-visibility:hidden;
+}
+
+button[data-initialized] {
+	
+
+	-webkit-transition:box-shadow ease-out .1s, -webkit-transform ease-out .1s;
+	-moz-transition:box-shadow ease-out .1s, -moz-transform ease-out .1s;
+	-ms-transition:box-shadow ease-out .1s, -ms-transform ease-out .1s;
+	transition:box-shadow ease-out .1s, transform ease-out .1s;
+}
+
+button.tilt-l {
+	
+}
+
+button.tilt-r {
+	
+}
+
+button.tilt-t {
+	
+}
+
+button.tilt-b {
+	
+}
+
+button.tilt-lt {
+	
+}
+
+button.tilt-rt {
+	
+}
+
+button.tilt-lb {
+	
+}
+
+button.tilt-rb {
+	
+}
+
+button.press {
+	
+}
+</style>
+<h1>Metro 3D Tile</h1>
+<button>tickle my edges</button>
+<script>
+
+var TileButton = function(element) {
+
+	this._element = element;
+
+	this._isDown = false;
+
+	this._center = {
+		x:element.offsetWidth *.5,
+		y:element.offsetHeight *.5
+	};
+
+	this._margin = this._center.x * .5;
+
+	this._element.setAttribute('data-initialized','true');
+
+	this._element.addEventListener('touchstart',this,false);
+	this._element.addEventListener('mousedown',this,false);
+	document.body.addEventListener('touchend',this,false);
+	document.body.addEventListener('mouseup',this,false);
+};
+
+
+TileButton.prototype = {
+
+	handleEvent:function(e) {
+		
+		e.preventDefault();
+		
+
+  
+		console.log(e.type);
+		switch(e.type) {
+			case 'touchstart':
+			  var touches = e.changedTouches;
+			  for (var i=0; i < touches.length; i++) {
+				console.log(touches[i].pageX - this._element.offsetLeft);
+				console.log(touches[i].pageY - this._element.offsetTop);
+				this._down(touches[i].pageX - this._element.offsetLeft, touches[i].pageY - this._element.offsetTop);
+			  }
+			  break;
+			case 'mousemove':
+			case 'mousedown':{
+				this._down(e.offsetX || e.layerX, e.offsetY || e.layerY);
+			}
+				break;
+			case 'touchend':
+			case 'mouseout':
+			case 'mouseup':{
+				this._up();
+			}
+				break;
+			default:{
+
+			}
+				break;
+		}
+
+	},
+
+	_down:function(x,y) {
+		console.log("_down:function("+x+","+y+")");
+		if (!this._isDown) {
+			this._element.addEventListener('mouseout',this,false);
+			this._isDown = true;
+		}
+
+		var tilt = '',
+			transform = 'perspective(750px)';
+
+		if (x < this._center.x - this._margin) {
+			tilt += 'l';
+			transform += ' rotateY(-8deg)';
+		}
+		else if (x > this._center.x + this._margin) {
+			tilt += 'r';
+			transform += ' rotateY(8deg)';
+		}
+
+		if (y < this._center.y - this._margin) {
+			tilt += 't';
+			transform += ' rotateX(8deg)';
+		}
+		else if (y > this._center.y + this._margin) {
+			tilt += 'b';
+			transform += ' rotateX(-8deg)';
+		}
+
+		this._transform(transform);
+
+		if (tilt.length) {
+			this._element.className = 'tilt-' + tilt;
+		}
+		else {
+			this._element.className = 'press';
+		}
+	},
+
+	_up:function() {
+
+		this._transform('');
+
+		this._element.className = '';
+
+		this._element.offsetLeft;
+
+		this._element.removeEventListener('mouseout',this,false);
+
+		this._isDown = false;
+	},
+
+	_transform:function(val) {
+
+		this._element.style['WebkitTransform'] = val;
+		this._element.style['MozTransform'] = val;
+		this._element.style['msTransform'] = val;
+		this._element.style['transform'] = val;
+
+	}
+}
+
+new TileButton(document.querySelector('button'));
+
+</script>
+</body></html>

@@ -1,0 +1,87 @@
+/*Importing custom fonts*/
+@import url(http:////netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css);
+
+button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "MozTT", sans-serif;
+  background-image: url("images/pattern.png");
+  overflow: hidden;
+}
+
+* {
+   user-select: none;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+}
+
+section.principal > header {
+  background-image: url(images/background-noise-toolbar.png), linear-gradient(#3e4750, #3e4750);
+  border-bottom: 0.1rem solid #323232;
+}
+
+
+
+
+/*basic reset*/
+
+
+.icons {
+	width: 220px;
+	margin: 0 auto;
+  -webkit-backface-visibility: hidden;
+    
+}
+.icons i {
+	display: block;
+	font-size: 24px;
+	line-height: 50px; width: 50px;
+	text-align: center;
+    
+}
+.icons a {
+	text-decoration: none;
+	color: white;
+	display: inline-block;
+	margin: 10px;
+	border-radius: 12px;
+	position: relative;
+}
+/*Now we will create fish-eye shapes using pseudo elements and clip them to add a curve to the sides of the icons*/
+.icons a:before, .icons a:after {
+	content: '';
+	position: absolute; left: 0; top: 0;
+	width: 100%; height: 100%;
+	background: inherit ;
+  
+	border-radius: 100%; /*circle*/
+	/*time to transform the circle into fish-eye shape. iOS7 style now.*/
+	transform: scaleX(2) scaleY(1.05);
+	/*clipping the left and right sides - 17px from the left and right*/
+clip: rect(0, 33px, 50px, 17px);
+	/*pushing it behind the icon*/
+	z-index: -1;
+}
+/*duplicating the :before element and rotating it 90deg and swapping the X/Y transforms*/
+
+.icons a:after {
+	transform: scaleY(2) scaleX(1.05) rotate(90deg);
+}
+/*colors*/
+.tw {background: #00ACF0;}
+.fb {background: #3B5997;}
+.gp {background: #DB4F48;}
+.ig {background: #447397;}
+.li {background: #007DB8;}
+.yt {background: #D12E2E;}
+
